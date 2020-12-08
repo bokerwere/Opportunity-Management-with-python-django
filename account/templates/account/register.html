@@ -1,0 +1,31 @@
+{% extends 'account/base.html'  %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-8 offset-md-1 mt-5">
+      <div class="jumbotron">
+  <h1 class="display-4" align="center">Registration Form</h1>
+
+  <hr class="my-4">
+ <p> Account</p>
+<form action="" method="post" autocomplete="off">
+   {% csrf_token %}
+{{form|crispy}}
+  <div class="row" >
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-success btn-block btn-sm">Submit</button>
+    </div>
+
+  </div>
+<div class="mt-4">
+    <div class="d-flex justify-content-center links">
+        Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+    </div>
+</div>
+</form>
+</div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<br>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="card card-body">
+			<h5>Account:</h5>
+			<hr>
+
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'account' %} ">Add Account</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="  ">Delete Account</a>
+
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<div class="card card-body">
+			<h5>Account Information</h5>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Address</th>
+					<th> User</th>
+					<th>Date</th>
+
+				</tr>
+                {% for account in account %}
+						<td>
+
+                            <td>{{account.name}}</td>
+							<td>{{account.address}}</td>
+				            <td>{{account.user}}</td>
+				            <td>{{account.date_created}}</td>
+							<td><a class="btn btn-info  btn-sm " href="{% url 'account-update' account.id  %} ">Update</a></td>
+							<td><a class="btn btn-danger btn-sm " href=" {% url 'delete-account' account.id %}">Delete</a></td>
+
+
+							</tr>
+
+						{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+
+</div>
+
+
+{% endblock %}

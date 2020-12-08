@@ -1,0 +1,70 @@
+{% extends 'account/base.html'  %}
+
+
+{% block content %}
+<body>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Account Details:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'account-view' %}">New Account</a>
+
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+                {% for account in account %}
+						<tr>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'account-view' %}">view</a></td>
+                            <td>{{account.name}}</td>
+							<td>{{account.address}}</td>
+
+							</tr>
+
+						{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Opportunity Information:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create-opportunity' %}">Create Opportunity</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Account</th>
+					<th>Stage</th>
+                   <th>Update</th>
+                   <th>Remove</th>
+
+				</tr>
+                 {% for opp in opportunity %}
+						<tr>
+
+							<td>{{opp.name}}</td>
+							<td>{{opp.amount}}</td>
+							<td>{{opp.account}}</td>
+                             <td>{{opp.stage}}</td>
+
+                            <td><a href="{% url 'update-opportunity' opp.id %}" class="btn btn-sm btn-info" >update</a></td>
+                             <td><a href="{% url 'delete-opportunity' opp.id %}" class="btn btn-sm btn-danger" >delete</a></td>
+							</tr>
+
+						{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+</body>
+{% endblock %}
+

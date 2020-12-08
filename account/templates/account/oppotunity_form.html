@@ -1,0 +1,40 @@
+{% extends 'account/base.html'  %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-8 offset-md-1 mt-5">
+      <div class="jumbotron">
+  <h1 class="display-4" align="center">Opportunity Management</h1>
+
+  <hr class="my-4">
+ <p> Account</p>
+<form action="" method="post" autocomplete="off">
+   {% csrf_token %}
+{{form.name|as_crispy_field}}
+  {{form.amount|as_crispy_field}}
+  <div class="row">
+  <div class="col-md-6">
+    {{form.account|as_crispy_field}}
+
+  </div>
+    <div class="col-md-6">
+    {{form.stage|as_crispy_field}}
+  </div>
+  </div>
+  <div class="row" >
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-success btn-block btn-sm">Create</button>
+    </div>
+     <div class="col-md-6">
+      <a href="{% url 'index'  %}" class="btn btn-sm btn-secondary btn-block" >Cancel</a>
+    </div>
+  </div>
+
+
+</form>
+</div>
+  </div>
+</div>
+{% endblock %}
